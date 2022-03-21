@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,14 @@ Route::get('/programs/{program}/edit',[ProgramController::class,'edit'])->name('
 Route::post('/programs/{program}',[ProgramController::class,'update'])->name('program_update');
 Route::get('/programs/{program}',[ProgramController::class,'destroy'])->name('program_destroy');
 
-// longin routes:
+// login&register routes:
 
 Route::get('/register',[LoginController::class,'getRegister'])->name('register_form');
 Route::post('/register',[LoginController::class,'register'])->name('register');
+
+
+Route::get('/login',[LoginController::class,'getLogin'])->name('login_form');
+Route::post('/login',[LoginController::class,'login'])->name('login');
+
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+

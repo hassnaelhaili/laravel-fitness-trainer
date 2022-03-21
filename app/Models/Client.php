@@ -12,5 +12,9 @@ class Client extends Model
     public function programs(){
         return $this->hasMany(Program::class);
     }
- 
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -10,7 +11,16 @@ class ClientController extends Controller
 
     public function index()
     {
-        $clients = Client::all();
+        if (!auth()->check()){
+            return redirect()->route('login');
+        }
+
+        $user_id = auth()->id();
+        $user = User::find($user_id);
+
+
+
+        $clients = $user->clients;
 
         return view('clients.index',['clients' => $clients]);
     }
@@ -25,6 +35,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $client = new Client();
+        $client->user_id = auth()->id();
         $client->full_name = $request->full_name;
         $client->paid_at = $request->paid_at;
         $client->save();

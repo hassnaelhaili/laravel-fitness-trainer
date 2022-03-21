@@ -12,6 +12,9 @@
 
 
     <div class="container">
+        @if(auth()->check())
+            <a href="{{route('logout')}}">Logout</a>
+        @endif
         @yield('content')
     </div>
 

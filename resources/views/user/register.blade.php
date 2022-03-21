@@ -2,24 +2,28 @@
 @section('content')
 
 
-    <form method="POST" action="{{route('register'}}">
+    <form method="POST" action="{{route('register')}}">
         @csrf
 
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
         <div class="mb-3">
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+            Name
+            <input type="text" placeholder="Enter Name" name="request_name"  required>
         </div>
         <div class="mb-3">
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-        </div>  
+             Email
+            <input type="email" placeholder="Enter Email" name="request_email"  required>
+        </div>
         <div class="mb-3">
-        	<label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-        </div>     
+            Password
+            <input type="password" placeholder="Enter Password"  name="request_password"  required>
+        </div>
+        <div class="mb-3">
+        	 Repeat Password
+            <input type="password" placeholder="Repeat Password" name="request_confirm_password"  required>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
