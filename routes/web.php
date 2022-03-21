@@ -36,3 +36,8 @@ Route::get('/programs/{program}/show',[ProgramController::class,'show'])->name('
 Route::get('/programs/{program}/edit',[ProgramController::class,'edit'])->name('program_edit');
 Route::post('/programs/{program}',[ProgramController::class,'update'])->name('program_update');
 Route::get('/programs/{program}',[ProgramController::class,'destroy'])->name('program_destroy');
+
+// longin routes:
+
+Route::get('/register',[LoginController::class,'getRegister'])->name('register_form');
+Route::post('/register',[LoginController::class,'register'])->name('register');

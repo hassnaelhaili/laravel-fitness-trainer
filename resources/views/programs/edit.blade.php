@@ -2,7 +2,7 @@
 @section('content')
 
 
-    <form method="POST" action="{{route('program_update',['program' => $program->id])}}">
+    <form method="POST" action="{{route(')}}">
         @csrf
         <div class="mb-3">
             <label  class="form-label">Date</label>
