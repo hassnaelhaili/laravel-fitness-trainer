@@ -23,6 +23,8 @@
                 <td><a href="{{route('show_client',['client' => $client->id])}}">Show</a></td>
                 <td><a href="{{route('edit_client',['client' => $client->id])}}">Edit</a></td>
                 <td><a href="{{route('destroy_client',['client' => $client->id])}}">Delete</a></td>
+                <td><a href="{{route('programs_index',['client' => $client->id])}}">View Program</a></td>
+
             </tr>
         @endforeach
 
