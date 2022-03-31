@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->text('title');
+            $table->string('title');
             $table->enum('type', ['workout', 'diet']);
-            $table->unsignedInteger('week');
-            $table->unsignedInteger('day');
+            $table->integer('current_week_number');
+            $table->enum('current_day_number',[1,2,3,4,5,6,7]);
             $table->timestamps();
         });
     }

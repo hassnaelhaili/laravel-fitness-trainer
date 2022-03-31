@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('exersices', function (Blueprint $table) {
             $table->id();
             $table->integer('program_id');
-            $table->unsignedInteger('week_number');
-            $table->unsignedInteger('day_number');
+            $table->integer('week_number');
+            $table->enum('day_number',[1,2,3,4,5,6,7]);
             $table->text('exersice_name');
-            $table->integer('sets');
-            $table->integer('reps');
-            $table->integer('rest');
-            $table->integer('duration');
-            $table->text('note');
-            $table->text('order');
+            $table->integer('sets')->nullable();
+            $table->integer('reps')->nullable();
+            $table->integer('rest')->nullable();
+            $table->integer('duration')->nullable();
+            $table->text('note')->nullable();
+            $table->integer('tartib');
             
             $table->timestamps();
         });

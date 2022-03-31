@@ -9,11 +9,4 @@ class Exersice extends Model
 {
     use HasFactory;
 
-    public function programs(){
-        return $this->hasMany(Program::class);
-    }
-
-    public function exersice(){
-        return $this->belongsTo(Program::class);
-    }
 }
