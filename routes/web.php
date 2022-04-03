@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +16,3 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-// USER
-Route::get('/register',[RegisterController::class,'index'])->name('sayft_form');
-
-Route::post('/register',[RegisterController::class,'register'])->name('register');
