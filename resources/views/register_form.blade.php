@@ -1,7 +1,7 @@
 
+<h1>Register Here Please</h1>
 
-
-<form method="POST"  action="/register">
+<form method="POST"  action="/register-post">
 	
 	@csrf
 
@@ -14,10 +14,8 @@
 	password
 	<input type="password" name="password">
 
-
 	confirm password
 	<input type="password" name="confirm">
-
 
 	<button type="submit"> Register </button>
 
