@@ -1,8 +1,8 @@
 
 <h1>Register Here Please</h1>
 
-<form method="POST"  action="/register-post">
-	
+<form method="POST"  action="/registration">
+
 	@csrf
 
 	email
