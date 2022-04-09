@@ -5,9 +5,10 @@ use App\Http\Controllers;
 use App\Http\Controllers\RegisterController;
 
 
-Route::get('/register',[RegisterController::class,'register'])->name('register_form');
-Route::post('registration', [RegisterController::class,'registration'])->middleware('registration_user');
-Route::post('/register-user',[RegisterController::class,'registerUser'])->name('register-user');
-Route::post('/login-user',[RegisterController::class,'loginUser'])->name('login-user');
-Route::get('/dashboard',[RegisterController::class,'dashboard']);
-Route::get('/logout' ,[RegisterController::class,'logout']);
+Route::get('/register', function() {
+    return view('register_form');
+});
+
+
+// here define register routes for post 
+Route::post('/register-post',[RegisterController::class,'postRegister']);
