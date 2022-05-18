@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone');
-            $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->string('job_title');
             $table->enum('gender',['male', 'female', 'other']);
             $table->string('city')->nullable();
