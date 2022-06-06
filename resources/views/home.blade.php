@@ -8,11 +8,20 @@
 <body>
 
 
-	<h1>Program</h1>
-	<form>
-		<a href="{{route('create_program_form')}}">create new program</button>
+	<h1>welcome to home page</h1>
 
-			</form>
+
+	@if(auth()->user()->type === 'coach')
+		<a href="/programs">
+			<button>View Programs</button>
+		<a>
+	@endif
+
+	<a href="/logout">
+		<button>logout</button>
+	<a>
+	
+
 
 
 </body>

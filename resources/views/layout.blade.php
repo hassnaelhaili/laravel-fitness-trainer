@@ -8,9 +8,13 @@
 </head>
 <body>
 
-<h1>This is programs</h1>
+	<div class="container">
+		<h1>Welcome To Programs</h1>
+		
+			@yield('content')
 
-	@yield('content')
+	</div>
+
 
 
 

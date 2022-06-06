@@ -16,9 +16,13 @@ Route::post('/register',[RegisterController::class,'registration']);
 Route::get('/registration/',[RegisterController::class,'khdam']);
 
 
-Route::get('/login' ,[LoginController::class,'index'])->name('login');;
+Route::get('/' ,[LoginController::class,'index']);
+
+Route::get('/login',[LoginController::class,'login']);
 Route::post('/login',[LoginController::class,'loginUser']);
+
 Route::get('/logout',[LoginController::class,'logoutUser']);
-Route::get('/home' ,[LoginController::class,'home'])->name('home');;
+
+
 
 Route::resource('programs',ProgramController::class);

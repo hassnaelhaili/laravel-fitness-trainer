@@ -9,10 +9,16 @@ class Program extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-public function register(){
-    return $his->belongTo(register::class);
- }
+    public function exersices()
+    {
+        return $this->hasMany(Exersice::class);
+    }
  
 }

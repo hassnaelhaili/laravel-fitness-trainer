@@ -1,18 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Program;
+use App\Models\Program;
 
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-    
+
     public function index()
     {
-        $program = Program::all();
+        $user_id = auth()->id();
 
-        return view('programs.index',compact('program'));
+        $programs = Program::where('user_id', $user_id)->get();
+
+        return view('programs.index',compact('programs'));
     }
 
    
@@ -25,35 +27,57 @@ class ProgramController extends Controller
    
     public function store(Request $request)
     {
-        $request ->validete([
+
+    /*    $request->validate([
             'title'               => 'required',
             'type'                => 'required',
             'current_week_number' => 'required',
             'current_day_number'  => 'required',
         ]);
+*/ 
 
-        $program = Program::create($request->all());
-        return redirect()->back('programs.index')->with('success','program added');
+        $program = [
+            'type' => $request->type,
+            'user_id' => auth()->id(),
+            'title'               => $request->title,
+            'current_week_number' => $request->current_week_number,
+            'current_day_number'  => $request->current_day_number,
+        ];
+
+
+        $program = Program::create($program);
+
+       // $user = auth()->user();
+
+       // $user->programs()->save($request->all());
+
+
+
+        return redirect()->to('/programs');
     }
 
     
 
-    public function show($Program program)
+    public function show(Program $program)
     {
-        return view('programs.show', compact('program'));
+
+        return view('programs.show',compact('programs'));
 
     }
 
     
     public function edit($id)
     {
-        return view('programs.edit',['program' => $program]);
+        $program = Program::where('id','=',$id)->find($id);
+
+        return view('programs.edit',compact('programs'));
+
     }
 
 
        public function update(Request $request, $id)
      {
-        $request ->validete([
+        $request ->validate([
             'title'               => 'required',
             'type'                => 'required',
             'current_week_number' => 'required',
@@ -70,8 +94,11 @@ class ProgramController extends Controller
         public function destroy($id)
     {
         $program->delete();
-           return redirect()->back('programs.index')
-        ->with('success','program deleted');
+         //  return redirect()->back('programs.index')
+        //->with('success','program deleted');
+
+            return view('programs.index',compact('programs'));
+
 
     }
 

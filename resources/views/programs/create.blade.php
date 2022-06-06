@@ -1,27 +1,35 @@
-@extends('programs.layout')
+@extends('layout')
 @section('content')
 
 
-
-<form>
+<div class="jumbotron container">
+<form method="POST" action="/programs">
 	@csrf
 	<div class="mb-3">
 		<label class="form-label">Title</label>
-		<input type="text" required class="form-control" name="title">
+		<input required type="text" required class="form-control" name="title">
 	</div>	
 	<div class="mb-3">
-		<label class="form-label">type</label>	
-		<input type="" name="">
+		<label class="form-label">Week</label>	
+		<input required type="number" name="current_week_number">
 	</div>
 	<div class="mb-3">
-		<label class="form-label">type</label>
-		<input type="" name="">		
+		<label for="type">Select your program</label>
+	<select required name="type">
+		<option value="none" selected>Type</option>
+		<option value="diet">Diet</option>
+		<option  value="workout">Traing</option><br>
+	</select>
+
 	</div>
 	<div class="mb-3">
-		<label class="form-label"></label>
-		<input type="" name="">		
+		<label class="form-label">Day</label>
+		<input required type="number" name="current_day_number">		
 	</div>
+
+	<button type="submit">submit</button>
 </form>
+</div>
 
 @endsection
 

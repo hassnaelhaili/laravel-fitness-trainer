@@ -2,21 +2,34 @@
 @section('content')
 
 
-    <form method="POST" action="">
-        @csrf
-        <div class="mb-3">
-            <label  class="form-label">Date</label>
-            <input type="date" required class="form-control" value="{{$program->date}}" name="date" >
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Description</label>
-            <input type="txte" required class="form-control" value="{{$program->session_description}}"  name="description" >
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Session Duration</label>
-            <input type="number" required class="form-control" value="{{$program->session_duration}}"  name="session duration" >
-        </div>
+<div class="jumbotron container">
+<form method="POST" action="/programs/update">
+    @csrf
+    
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input required type="text" required class="form-control" name="title">
+    </div>  
+    <div class="mb-3">
+        <label class="form-label">Week</label>  
+        <input required type="number" name="current_week_number">
+    </div>
+    <div class="mb-3">
+        <label for="type">Select your program</label>
+    <select required name="type">
+        <option value="none" selected>Type</option>
+        <option value="diet">Diet</option>
+        <option  value="workout">Traing</option><br>
+    </select>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Day</label>
+        <input required type="number" name="current_day_number">        
+    </div>
+
+    <button type="submit">submit</button>
+</form>
+</div>
+
 @endsection

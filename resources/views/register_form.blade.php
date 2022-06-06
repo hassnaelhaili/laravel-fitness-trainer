@@ -1,5 +1,3 @@
-CVC
-
 
 <form method="POST"  action="/register">
 	
