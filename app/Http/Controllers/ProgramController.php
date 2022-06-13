@@ -61,43 +61,41 @@ class ProgramController extends Controller
     public function show(Program $program)
     {
 
-        return view('programs.show',compact('programs'));
+        return view('programs.show',['program' => $program]);
 
     }
 
     
-    public function edit($id)
+    public function edit(Program $program)
     {
-        $program = Program::where('id','=',$id)->find($id);
 
-        return view('programs.edit',compact('programs'));
+        return view('programs.edit',['program' => $program]);
 
     }
 
 
-       public function update(Request $request, $id)
+    public function update(Request $request, Program $program)
      {
-        $request ->validate([
+       /* $request ->validate([
             'title'               => 'required',
             'type'                => 'required',
             'current_week_number' => 'required',
             'current_day_number'  => 'required',
-        ]);
+        ]);*/
 
-        $program = Program::update($request->all());
-        return redirect()->back('programs.index')
-        ->with('success','program updated');
+        $program->update($request->all());
+        return redirect()->to('/programs');
     }
 
 
 
-        public function destroy($id)
+    public function destroy($id)
     {
         $program->delete();
          //  return redirect()->back('programs.index')
         //->with('success','program deleted');
 
-            return view('programs.index',compact('programs'));
+            return redirect()->to('/programs');
 
 
     }
