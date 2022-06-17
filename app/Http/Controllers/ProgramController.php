@@ -76,14 +76,25 @@ class ProgramController extends Controller
 
     public function update(Request $request, Program $program)
      {
-       /* $request ->validate([
+
+
+       $request ->validate([
             'title'               => 'required',
             'type'                => 'required',
             'current_week_number' => 'required',
             'current_day_number'  => 'required',
-        ]);*/
+        ]);
 
+       /*
+        $program->title               = $request->title;
+        $program->type                = $request->type;
+        $program->current_week_number = $request->current_week_number;
+        $program->current_day_number  = $request->current_week_number;
+       // $program->save();
+        */
         $program->update($request->all());
+       // return redirect()->to('/programs.index',['program' => $program]);
+
         return redirect()->to('/programs');
     }
 
