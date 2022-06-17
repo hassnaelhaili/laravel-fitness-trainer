@@ -93,9 +93,9 @@ class ProgramController extends Controller
        // $program->save();
         */
         $program->update($request->all());
-       // return redirect()->to('/programs.index',['program' => $program]);
+       return redirect()->to('/programs.index',['program' => $program]);
 
-        return redirect()->to('/programs');
+       // return redirect()->to('/programs');
     }
 
 
@@ -103,10 +103,10 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         $program->delete();
-         //  return redirect()->back('programs.index')
+           return redirect()->back('programs.index');
         //->with('success','program deleted');
 
-            return redirect()->to('/programs');
+            //return redirect()->to('/programs');
 
 
     }
