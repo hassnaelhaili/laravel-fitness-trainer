@@ -29,10 +29,16 @@
  				<td>{{$program->current_week_number}}</td>
  				<td>{{$program->current_day_number}}</td>
  				<td>{{$program->type}}</td>
- 				<td><a href={{'/programs/'.$program->id.'/edit'}}>Edit Program</a></td>
- 				<td><a href="/programs/show">view program</a></td>
+
+ 				<td><a href={{'/programs/'.$program->isd.'/edit'}}>Edit Program</a></td>
+ 				<td><a href={{'/programs/'.$program->id}}>view program</a></td>
  				<td><a href="/programs/show">view exersices</a></td>
- 				<td><a href="/programs">Delete</a></td>
+ 				<form method="POST" action="{{'/programs/'.$program->id}}">
+ 					@csrf
+ 					@method('DELETE')
+ 					 <td><button type="submit">Delete</button> </td>
+
+ 				</form>
 
  			</tr>
  		@endforeach

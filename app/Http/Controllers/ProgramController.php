@@ -100,10 +100,13 @@ class ProgramController extends Controller
 
 
 
-    public function destroy($id)
+    public function destroy(Program $program)
     {
+       
         $program->delete();
-           return redirect()->back('programs.index');
+        //return view('programs.index',['program' => $program]);
+         return redirect()->to('/programs');
+         
         //->with('success','program deleted');
 
             //return redirect()->to('/programs');
