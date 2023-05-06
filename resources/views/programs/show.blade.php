@@ -1,21 +1,13 @@
 @extends('layout')
 @section('content')
 
+<h1> Title : {{$program->title}}</h1>
+<h2> Week : {{$program->week}}</h2>
+<h3> type : {{$program->type}}</h3>
+<h4> current_week_number : {{$program->current_week_number}}</h4>
+<h5> current_day_number : {{$program->current_day_number}}</h5>
+  
 
-    <h1>Date : {{$program->date}}</h1>
-    <h3>Description : {{$program->description}}</h3>
-    <h4>Session Duration : {{$program->session_duration}}</h4>
-    <h6>Created :{{$program->created_at}}</h6>
-    <h6>Updated : {{$program->updated_at}}</h6>
-
-
-
-
-    <a href="{{route('programs_index',['client'=> $program->client_id])}}" >
-        <button type="button" class="btn-secondary btn" >Back</button>
-    </a>
-
+ <a href="{{'/programs/'.$program->id}}"></a>
+ <button type="button" class="btn-secondary btn">back</button>
 @endsection
-
-
-

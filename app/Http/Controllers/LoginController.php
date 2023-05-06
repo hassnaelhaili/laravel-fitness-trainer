@@ -1,60 +1,59 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Hash;
+use Session;
 
-class LoginController extends Controller
+
+class loginController extends Controller
 {
-    public function login(Request $request){
 
-        $user = User::where('email',$request->email)->where('password', $request->password)->first();
+    // when user enter / we check if logged in we show index page else we redirect him to login page
+    public function index(){
 
+        if (auth()->check()) {
 
-        if (!$user){
-            return 'invalid email or password ';
-        }
+             return view('home');
 
+            }
 
-        auth()->login($user);
-
-        return redirect()->route('clients_index');
+        return redirect()->to('/login');
 
     }
 
-    public function register(Request $request){
-        $exist = User::where('email',$request->request_email)->first();
-         if ($exist){
-            return 'this email already exist';
-         }
+    //when receive get request
+    public function login(){
 
-         if ($request->request_password != $request->request_confirm_password){
-             return "password doesn't match";
-         }
+        return view('login');
+    }
+    
+    // post request
+    public function loginUser(Request $request){
 
-         $user = new User();
-         $user->name = $request->request_name;
-         $user->email = $request->request_email;
-         $user->password = $request->request_password;
-         $user->save();
 
-         return redirect()->route('login_form');
+        $user = User::where('email','=',$request->email)
+                ->where('password','=', $request->password)
+                ->first();
+
+        if ($user) {
+
+            auth()->login($user);
+            return redirect()->to('/'); 
+            }     
+
+        return redirect()->to('/login');    
+
     }
 
-    public function logout(){
+    public function logoutUser(){
+
         auth()->logout();
-        return redirect()->route('login_form');
+    
+        return redirect()->to('/login');
     }
-
-    public function getRegister(){
-        return view('user.register');
-    }
-    public function getLogin(){
-        return view('user.login');
-    }
-
-
 
 
 }
+

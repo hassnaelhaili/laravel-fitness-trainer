@@ -1,40 +1,51 @@
 @extends('layout')
+
 @section('content')
 
-<h1>Program Week</h1>
+<div class="jumbotron container">
+	<a class="btn btn-primary btn-lg" href="/programs/create" role="button">Create New program</a>
+
+	@csrf
+	 <table class="table table-dark table-striped">
+
+ 	<thead>
+ 		<th scope="col">#id</th>
+      	<th scope="col">Title</th>
+     	<th scope="col">Week</th>
+     	<th scope="col">Day</th>
+     	<th scope="col">Type</th>
+    </tr>
+ 		
 
 
-<div class="container">
-	<div>
-	<a href="{{route('clients_index')}}"><button class="btn btn-secondary"> Back</button></a>
+ 	</thead>
+ 	<tbody>
+
+ 		@foreach($programs as $program)
+
+ 			<tr>
+ 				<td>{{$program->id}}</td>
+ 				<td>{{$program->title}}</td>
+ 				<td>{{$program->current_week_number}}</td>
+ 				<td>{{$program->current_day_number}}</td>
+ 				<td>{{$program->type}}</td>
+
+ 				<td><a href={{'/programs/'.$program->isd.'/edit'}}>Edit Program</a></td>
+ 				<td><a href={{'/programs/'.$program->id}}>view program</a></td>
+ 				<td><a href="/programs/show">view exersices</a></td>
+ 				<form method="POST" action="{{'/programs/'.$program->id}}">
+ 					@csrf
+ 					@method('DELETE')
+ 					 <td><button type="submit">Delete</button> </td>
+
+ 				</form>
+
+ 			</tr>
+ 		@endforeach
+
+ 	</tbody>
+ </table>
 </div>
-	<table class="table table-dark table-striped">
-	<thead>
-		<th>date</th>
-		<th>description</th>
-		<th>session duration</th>
-	</thead>
-
-	<tbody>
-
-		@foreach($client->programs as $program)
-			<tr>
-					<td>{{$program->date}}</td>
-					<td>{{$program->session_description}}</td>
-					<td>{{$program->session_duration}}</td>
-					
-					<td><a href="{{route('program_edit',['program'=>$program->id])}}">edit program</a></td>
-					<td><a href="{{route('program_show',['program'=>$program->id])}}">Show program</a></td>
-					<td><a href="{{route('program_destroy',['program'=>$program->id])}}">Delete program</a></td>
-			
-			</tr>
-
-		@endforeach
-	</tbody>
-</table>
-<div>
-	<a href="{{route('create_program_form',['client'=>$client->id])}}">Add program</button>
+	
 </div>
-</div>	
-
 @endsection
